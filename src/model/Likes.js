@@ -7,7 +7,7 @@ export default class Likes {
     this.likes.push(like);
     return like;
   }
-  deleteItem(id) {
+  deleteLike(id) {
     const index = this.likes.findIndex((el) => el.id === id);
         this.item.slice(index, 1);
   }
