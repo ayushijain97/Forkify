@@ -1,0 +1,8 @@
+so we will go to controller part and where we gonna add the eventlistener so in the recipesView we add the event listener to plus and minus button similary we will add on the add to shopping list button too.we have same class recipe__btn in the anchor elemnt also so we will going to add another class to shopping list markup in recipeView file.
+
+so now comes to controller and we add the eventListeneers in the handling buttons click and here. we are doing event delegation as these element are not present by the time we load up the page.
+so we going to do the same way we are going we are checking that the elemnt we are targeting  matches the string we are looking for. 
+else if (e.target.matches("recipe__btn--add,recipe__btn--add *")){
+		controlList();
+  }
+what we gonna do when target matches we will going to call our control list function which. we gonna create next. we have recipe controller we have search controller similarly we have list controller.and we will going to put this before handling the buttons things happend
