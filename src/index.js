@@ -147,9 +147,6 @@ element.shopping.addEventListener("click",e=>{
 Like Controller
    
 */
-// testing
-state.like = new Likes();
-likesView.toggleLikesMenu(state.like.getNumLikes());
 const controlLike=()=>{
   // create a new like if there is none yet
   if (!state.like) state.like = new Likes();
@@ -171,7 +168,7 @@ const controlLike=()=>{
   // user has liked currently liked currentRecipe
   else {
     // Remove like from the state
-    state.like.deleteLike(currentID);
+   state.like.deleteLike(currentID);
     // Toggle the liked button
     likesView.toggleLikeBtn(false);
     // Remove like from  UI list
@@ -181,7 +178,16 @@ const controlLike=()=>{
   console.log(state.like.getNumLikes());
 }
 
-
+// Restore liked recipe on page loads.
+window.addEventListener("load",()=>{
+  state.like = new Likes();
+  // Restore likes
+  state.like.readStorage();
+  // toggle like menu button 
+  likesView.toggleLikesMenu(state.like.getNumLikes());
+  // Render the existing likes.
+  console.log(state.like.like.forEach(like=>likesView.renderLikes(like)));
+})
 
 
 // Handling recipe button clicks
