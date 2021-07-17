@@ -34,7 +34,7 @@ const createIngredients = (ingredient) => `
               </div>
           </li>`;
 
-export const renderRecipe = (recipes) => {
+export const renderRecipe = (recipes,isLiked) => {
   console.log("renderRecipe");
   const markup = `
   <figure class="recipe__fig">
@@ -79,7 +79,7 @@ export const renderRecipe = (recipes) => {
       </div>
       <button class="recipe__love">
           <svg class="header__likes">
-              <use href="img/icons.svg#icon-heart-outlined"></use>
+              <use href="img/icons.svg#icon-heart${isLiked?"":"-outlined"}"></use>
           </svg>
       </button>
   </div>
@@ -126,8 +126,10 @@ export const updateServingsIngredients = (recipe) => {
   // Update ingredients
   const countElements = Array.from(document.querySelectorAll(".recipe__count"));
   countElements.forEach((el, i) => {
-      console.log(recipe.ingredients[i].amount, "amount");
+      if (recipe.ingredients[i]){
+        console.log(recipe.ingredients[i].amount, "amount");
     el.textContent = formatCount(recipe.ingredients[i].amount);
+      }
     
   });
 };

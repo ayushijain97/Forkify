@@ -9,7 +9,7 @@ export default class Likes {
   }
   deleteLike(id) {
     const index = this.likes.findIndex((el) => el.id === id);
-        this.item.slice(index, 1);
+      this.likes.slice(index, 1);
   }
   isLiked(id){
       return this.likes.findIndex(el=>el.id===id)!==-1;

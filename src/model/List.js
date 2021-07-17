@@ -23,7 +23,9 @@ export default class List {
         this.item.slice(index,1);
     }
     updateCount(id,newCount){
+        if(this.item.count){
         this.item.find(el=>el.id===id).count=newCount;
+        }
 
     }
 
