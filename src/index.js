@@ -186,7 +186,8 @@ window.addEventListener("load",()=>{
   // toggle like menu button 
   likesView.toggleLikesMenu(state.like.getNumLikes());
   // Render the existing likes.
-  console.log(state.like.like.forEach(like=>likesView.renderLikes(like)));
+  state.like.like.forEach(like=>likesView.renderLikes(like));
+  console.log(state.like.like);
 })
 
 

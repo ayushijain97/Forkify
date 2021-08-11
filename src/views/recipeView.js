@@ -5,18 +5,20 @@ export const clearRecipe = () => {
 };
 const formatCount = (count) => {
   if (count) {
+
+    const newCount=Math.round(count*10000)/10000;
     //count =2.5
     // count= 0.5
-    const [int, dec] = count
+    const [int, dec] = newCount
       .toString()
       .split(".")
       .map((el) => parseInt(el, 10));
-    if (!dec) return count;
+    if (!dec) return newCount;
     if (int === 0) {
-      const fr = new Fraction(count);
+      const fr = new Fraction(newCount);
       return `${fr.numerator}/${fr.denominator}`;
     } else {
-      const fr = new Fraction(count - int);
+      const fr = new Fraction(newCount - int);
       return `${int} ${fr.numerator}/${fr.denominator}`;
     }
   }
@@ -127,7 +129,7 @@ export const updateServingsIngredients = (recipe) => {
   const countElements = Array.from(document.querySelectorAll(".recipe__count"));
   countElements.forEach((el, i) => {
       if (recipe.ingredients[i]){
-        console.log(recipe.ingredients[i].amount, "amount");
+        // console.log(recipe.ingredients[i].amount, "amount");
     el.textContent = formatCount(recipe.ingredients[i].amount);
       }
     
